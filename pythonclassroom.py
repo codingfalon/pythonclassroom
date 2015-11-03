@@ -1,4 +1,4 @@
-lloyd = {
+lloyd = {                               #create dictionary for each student's performance
     "name": "Lloyd",
     "homework": [90.0, 97.0, 75.0, 92.0],
     "quizzes": [88.0, 40.0, 94.0],
@@ -17,21 +17,21 @@ tyler = {
     "tests": [100.0, 100.0]
 }
 
-def average(numbers):
+def average(numbers):                  #function applies to each student
     total = sum(numbers)
-    total = float(total)
-    average = total/len(list(numbers))
+    total = float(total)               #uses float to ensure decimal is utilized
+    average = total/len(list(numbers)) #len counts how many numbers were used for average
     
     return average
 
 def get_average(student):
-    homework = average(student["homework"])
+    homework = average(student["homework"]) #key/value pairs provide data per student
     quizzes = average(student["quizzes"])
     tests = average(student["tests"]) 
-    return .10*homework + .30*quizzes + .60*tests 
+    return .10*homework + .30*quizzes + .60*tests #preset formula for class grade
     
 def get_letter_grade(score):
-    if score >= 90:
+    if score >= 90:                    #preset formula for grading system
         return "A"
     elif score >=80:
         return "B"
@@ -42,15 +42,13 @@ def get_letter_grade(score):
     else:
         return "F" 
 
-print get_letter_grade(get_average(lloyd))
-
 def get_class_average (students):
-    results = []
+    results = []                            #begin with an empty list to call later
     for student in students:
-        result = get_average(student)
+        result = get_average(student)       #iterates through formula for each student
         results.append(result)
     return average(results)
 
 students = [lloyd, alice, tyler]
-print get_class_average(students)
-print get_letter_grade(results)
+print get_class_average(students)           #displays each students' (float) average     
+print get_letter_grade(results)             #displays each students' letter grade
